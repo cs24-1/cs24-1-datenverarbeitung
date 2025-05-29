@@ -91,5 +91,34 @@ public class LibraryTest {
         library.addBook(martian);
         // computerArchitecture kann nicht hinzugefügt werden,
         // da die Typen nicht übereinstimmen.
+
+        // Beispielabfragen
+        System.out.println("Suche nach Büchern mit Titel 'Der Marsianer':");
+        library.findByTitle("Der Marsianer")
+                .forEach(book -> System.out.println("- Gefunden: " + book.getTitle() + " von " + book.getAuthor()));
+
+        System.out.println();
+
+        System.out.println("Suche nach Büchern von Rose Snow:");
+        library.findByAuthor("Snow", "Rose")
+                .forEach(book -> System.out.println("- Gefunden: " + book.getTitle() + " von " + book.getAuthor()));
+
+        System.out.println();
+
+        System.out.println("Suche nach Büchern im Genre FANTASY:");
+        library.findByGenre(Genre.FANTASY)
+                .forEach(book -> System.out.println("- Gefunden: " + book.getTitle() + " von " + book.getAuthor()));
+
+        System.out.println();
+
+        // Bonus
+        System.out.println("Suche nach Büchern von irgendeinem 'Row':");
+        library.findByAuthor("Row")
+                .forEach(book -> System.out.println("- Gefunden: " + book.getTitle() + " von " + book.getAuthor()));
+
+        System.out.println();
+
+        System.out.println("Anzahl der Bücher im Genre FANTASY: " + library.countBooksByGenre(Genre.FANTASY));
+        System.out.println("Anzahl der Bücher von Arthur I.C. Doyle: " + library.countBooksByAuthor("Doyle", "Arthur Ignatius Conan"));
     }
 }
