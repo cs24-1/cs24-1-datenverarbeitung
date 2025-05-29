@@ -93,28 +93,26 @@ public class LibraryTest {
         // da die Typen nicht übereinstimmen.
 
         // Beispielabfragen
+        ResultPrinter<String> resultPrinter = (Book<String> book) -> System.out.println("- Gefunden: " + book.getTitle() + " von " + book.getAuthor());
+
         System.out.println("Suche nach Büchern mit Titel 'Der Marsianer':");
-        library.findByTitle("Der Marsianer")
-                .forEach(book -> System.out.println("- Gefunden: " + book.getTitle() + " von " + book.getAuthor()));
+        library.findByTitle("Der Marsianer").forEach(resultPrinter::showResult);
 
         System.out.println();
 
         System.out.println("Suche nach Büchern von Rose Snow:");
-        library.findByAuthor("Snow", "Rose")
-                .forEach(book -> System.out.println("- Gefunden: " + book.getTitle() + " von " + book.getAuthor()));
+        library.findByAuthor("Snow", "Rose").forEach(resultPrinter::showResult);
 
         System.out.println();
 
         System.out.println("Suche nach Büchern im Genre FANTASY:");
-        library.findByGenre(Genre.FANTASY)
-                .forEach(book -> System.out.println("- Gefunden: " + book.getTitle() + " von " + book.getAuthor()));
+        library.findByGenre(Genre.FANTASY).forEach(resultPrinter::showResult);
 
         System.out.println();
 
         // Bonus
         System.out.println("Suche nach Büchern von irgendeinem 'Row':");
-        library.findByAuthor("Row")
-                .forEach(book -> System.out.println("- Gefunden: " + book.getTitle() + " von " + book.getAuthor()));
+        library.findByAuthor("Row").forEach(resultPrinter::showResult);
 
         System.out.println();
 
