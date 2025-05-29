@@ -3,6 +3,7 @@ package library.management.testing;
 import library.management.models.Author;
 import library.management.models.Book;
 import library.management.models.Genre;
+import library.management.models.Library;
 
 public class LibraryTest {
     public static void main(String[] args) {
@@ -78,5 +79,17 @@ public class LibraryTest {
                 .setGenre(Genre.SCIENCE_FICTION)
                 .setContent("Ich bin sowas von im Arsch. Das ist meine wohlüberlegte Meinung. Im Arsch.")
                 .build();
+
+
+        // Beispielbibliothek
+        Library<String> library = new Library<>();
+
+        library.addBook(rose1);
+        library.addBook(rose2);
+        library.addBook(harryPotter);
+        library.addBook(sherlockHolmes);
+        library.addBook(martian);
+        // computerArchitecture kann nicht hinzugefügt werden,
+        // da die Typen nicht übereinstimmen.
     }
 }
